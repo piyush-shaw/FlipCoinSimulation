@@ -17,10 +17,12 @@ do
 if [ $((RANDOM%2)) -eq 1 ]
 then
 echo "head wins"
-((heads++))
+((heads++[a]))
+echo "store the value "${heads++[@]} 
 else
 echo "tail wins"
 ((tails++))
+echo "store tail value "${tails[@]}
 fi
 if [ $heads -eq 21 ]
 then
@@ -30,7 +32,7 @@ elif [ $tails -eq 21 ]
 then
 echo "tails wins by "$tails" times"
 exit
-elif [ $heads -eq $tails -a $tails -eq $heads ]
+elif [ $heads -eq $tails && $tails -eq $heads ]
 then
 echo "both heads and tails are tie"
 exit
